@@ -2,7 +2,8 @@ from datetime import timedelta
 
 from django.utils import timezone
 
-from .models import Todo
+if __name__ == '__main__':
+    from .models import Todo
 
 SAMPLE_TASKS = [
     "First thing we do is...",
@@ -17,7 +18,8 @@ SAMPLE_TASKS = [
 todos = []
 for index, task in enumerate(SAMPLE_TASKS):
     todos.append(Todo.objects.create(
-        task=task,
+        title=task.upper(),
+        description=task,
         completed=not bool((index + 1) % 3),
         # created=timezone.now(),
         due=timezone.now() + timedelta(days=index - 2),

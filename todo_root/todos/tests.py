@@ -21,7 +21,8 @@ class TodoModelTest(TestCase):
         self.todos = []
         for index, task in enumerate(SAMPLE_TASKS):
             self.todos.append(Todo.objects.create(
-                task=task,
+                title=task.upper(),
+                description=task,
                 completed=not bool((index + 1) % 3),
                 # created=timezone.now(),
                 due=timezone.now() + timedelta(days=index - 2)
@@ -29,5 +30,5 @@ class TodoModelTest(TestCase):
 
     def test_01_create_todos(self):
         for todo in self.todos:
-            query = Todo.objects.get(task=todo.task)
+            query = Todo.objects.get(title=todo.title)
             self.assertEqual(query, todo)
