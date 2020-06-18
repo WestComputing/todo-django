@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block head_title %}Edit Todo{% endblock %}
+{% block content %}
+    <h1>Add a New Todo</h1>
+    <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'todos:index' %}"><input type="button" value="Cancel"></a>
+        <input type="reset" value="Reset Form">
+        <input type="submit" value="Create">
+    </form>
+{% endblock %}

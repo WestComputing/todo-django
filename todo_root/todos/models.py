@@ -6,10 +6,10 @@ from django.utils import timezone
 
 class Todo(models.Model):
     title = models.CharField(max_length=50)
-    description = models.TextField(null=True, default=title)
+    description = models.TextField(null=True)
     completed = models.BooleanField(default=False)
-    created = models.DateTimeField(default=timezone.now)
-    due = models.DateTimeField(null=True, default=timezone.now() + timedelta(days=7))
+    created = models.DateField(default=timezone.now)
+    due = models.DateField(null=True, default=timezone.now() + timedelta(days=7))
 
     def __str__(self):
         return f"{self.id}: {self.title} " \

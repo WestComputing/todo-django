@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Todo List</title>
-</head>
-<body>
-{% if todo_list %}
-    <h1>Todo List</h1>
-    {% for todo in todo_list %}
-        <div>
-            <h2>{{ todo.title }}</h2>
-            <h3>{{ todo.description }}</h3>
-        </div>
-    {% endfor %}
-{% else %}
-    <h1>Nothing to do!</h1>
-{% endif %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block head_title %}Todo List{% endblock %}
+{% block content %}
+    {% if todo_list %}
+        <h1>Todo List</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>Date Due</th>
+                <th colspan="3"><a href="{% url 'todos:new' %}">Add a Todo</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for todo in todo_list %}
+                <tr>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.completed|yesno:"Completed,Incomplete" }}</td>
+                    <td>{{ todo.created }}</td>
+                    <td>{{ todo.due }}</td>
+                    <td><a href="{% url 'todos:delete' todo.id %}">Delete</a></td>
+                    <td><a href="{% url 'todos:edit' todo.id %}">Edit</a></td>
+                    <td><a href="{% url 'todos:detail' todo.id %}">View</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>Nothing to do!</h1>
+        <a href="{% url 'todos:new' %}">Create a new todo</a>
+    {% endif %}
+{% endblock %}

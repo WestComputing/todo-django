@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block head_title %}Delete {{ todo.title }}?{% endblock %}
+{% block content %}
+    <h1>Delete {{ todo.title }}?</h1>
+    <div>
+        <h3>{{ todo.completed|yesno:"Completed,Incomplete" }}</h3>
+        <h5>Created on {{ todo.created }} and due by {{ todo.due }}</h5>
+        <p>{{ todo.description }}</p>
+    </div>
+    <form method="POST">{% csrf_token %}
+        <a href="{% url 'todos:index' %}"><input type="button" value="Cancel" autofocus></a>
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}

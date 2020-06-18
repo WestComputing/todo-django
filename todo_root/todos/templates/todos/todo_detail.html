@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block head_title %}{{ todo.title }}{% endblock %}
+{% block content %}
+    <h1>{{ todo.title }}</h1>
+    <div>
+        <h3>{{ todo.completed|yesno:"Completed,Incomplete" }}</h3>
+        <h5>Created on {{ todo.created }} and due by {{ todo.due }}</h5>
+        <p>{{ todo.description }}</p>
+        <a href="{% url 'todos:edit' todo.id %}">Edit</a>
+        <a href="{% url 'todos:delete' todo.id %}">Delete</a>
+    </div>
+    <br>
+    <a href="{% url 'todos:new' %}">Create a new todo</a>
+    <br>
+    <a href="{% url 'todos:index' %}">Back to Todo List</a>
+{% endblock %}
