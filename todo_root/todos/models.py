@@ -11,6 +11,12 @@ class Todo(models.Model):
     created = models.DateField(default=timezone.now)
     due = models.DateField(null=True, default=timezone.now() + timedelta(days=7))
 
+    def due_today(self):
+        return bool(self.due == timezone.localdate())
+
+    def overdue(self):
+        return bool(self.due < timezone.localdate())
+
     def __str__(self):
         return f"{self.id}: {self.title} " \
                f"created: {self.created.strftime('%Y-%m-%d')} " \

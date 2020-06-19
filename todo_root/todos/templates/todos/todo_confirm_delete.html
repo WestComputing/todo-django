@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% block head_title %}Delete {{ todo.title }}?{% endblock %}
 {% block content %}
-    <h1>Delete {{ todo.title }}?</h1>
-    <div>
-        <h3>{{ todo.completed|yesno:"Completed,Incomplete" }}</h3>
-        <h5>Created on {{ todo.created }} and due by {{ todo.due }}</h5>
-        <p>{{ todo.description }}</p>
+    <h1 class="mt-3 mb-3 p-3 text-center shadow-sm border bg-dark text-light">{{ todo.title }}</h1>
+    <h2 class="my-2 p-2 bg-{{ todo.completed|yesno:"success,warning" }} text-white shadow-sm">{{ todo.completed|yesno:"Completed,Incomplete" }}</h2>
+    <h3 class="my-2 p-2 border shadow-sm bg-white text-{% if todo.completed %}success{% elif todo.due_today %}warning{% elif todo.overdue %}danger{% else %}transparent{% endif %}">
+        Due {{ todo.due }}{% if todo.due_today %} (*TA-DAY*){% elif todo.overdue %} (*OVERDUE*){% endif %}</h3>
+    <h4 class="my-2 p-2 border shadow-sm bg-light">Created {{ todo.created }}</h4>
+    <p class="m-5 p-5 border shadow">{{ todo.description }}</p>
+    <div class="d-flex flex-wrap justify-content-center">
+        <form method="POST">{% csrf_token %}
+            <a href="{% url 'todos:index' %}">
+                <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-secondary text-light"
+                       type="button" value="Cancel">
+            </a>
+            <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-danger text-white"
+                   type="submit" value="Delete">
+        </form>
     </div>
-    <form method="POST">{% csrf_token %}
-        <a href="{% url 'todos:index' %}"><input type="button" value="Cancel" autofocus></a>
-        <input type="submit" value="Delete">
-    </form>
 {% endblock %}

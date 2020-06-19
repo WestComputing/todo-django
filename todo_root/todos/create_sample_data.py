@@ -21,6 +21,5 @@ for index, task in enumerate(SAMPLE_TASKS):
         title=task.upper(),
         description=task,
         completed=not bool((index + 1) % 3),
-        # created=timezone.now(),
         due=timezone.now() + timedelta(days=index - 2),
     ))
