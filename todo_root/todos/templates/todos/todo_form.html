@@ -15,15 +15,6 @@
             <input class="btn btn-lg btn-primary border shadow rounded-pill my-4 px-4 py-2"
                    type="submit" value="Create">
         </div>
-        {% if form.errors %}
-            <div class="mt-5 alert alert-dark shadow-sm">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                {% for field in form %}
-                    {% if field.errors %}
-                        {{ field.label }}: {{ field.errors|striptags }}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endif %}
+        {% include 'form_error_alert.html' %}
     </form>
 {% endblock %}
