@@ -1,3 +1,7 @@
+![Image of Todo Index](todo_list.png)
+
+![Image of Todo Detail](todo_detail.png)
+
 # Todo List
 
 In this challenge we're going to create a basic CRUD app with just a single record type so that you can focus on practicing the basic actions for CRUD.
