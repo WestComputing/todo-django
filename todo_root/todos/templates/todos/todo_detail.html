@@ -9,19 +9,19 @@
     <p class="m-5 p-5 border shadow">{{ todo.description }}</p>
     <div class="d-flex flex-wrap justify-content-around">
         <a href="{% url 'todos:index' %}">
-            <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-secondary text-light"
+            <input class="btn btn-lg btn-secondary border shadow rounded-pill mx-auto my-4 px-4 py-2"
                    type="button" value="Back to Todo List">
         </a>
         <a href="{% url 'todos:edit' todo.id %}">
-            <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-warning text-white"
+            <input class="btn btn-lg btn-warning border shadow rounded-pill mx-auto my-4 px-4 py-2"
                    type="button" value="Edit">
         </a>
         <a href="{% url 'todos:delete' todo.id %}">
-            <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-danger text-white"
+            <input class="btn btn-lg btn-danger border shadow rounded-pill mx-auto my-4 px-4 py-2"
                    type="button" value="Delete">
         </a>
         <a href="{% url 'todos:new' %}">
-            <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-primary text-light"
+            <input class="btn btn-lg btn-primary border shadow rounded-pill mx-auto my-4 px-4 py-2"
                    type="button" value="Create a new todo">
         </a>
     </div>
