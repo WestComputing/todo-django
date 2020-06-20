@@ -8,3 +8,7 @@ body {
 a, input[type=submit], [type=button], [type=reset] {
     font-family: 'Staatliches', sans-serif !important;
 }
+
+#id_description {
+    width: 100%
+}

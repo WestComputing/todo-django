@@ -7,14 +7,14 @@
         Due {{ todo.due }}{% if todo.due_today %} (*TA-DAY*){% elif todo.overdue %} (*OVERDUE*){% endif %}</h3>
     <h4 class="my-2 p-2 border shadow-sm bg-light">Created {{ todo.created }}</h4>
     <p class="m-5 p-5 border shadow">{{ todo.description }}</p>
-    <div class="d-flex flex-wrap justify-content-center">
-        <form method="POST">{% csrf_token %}
+    <form method="POST">{% csrf_token %}
+        <div class="d-flex flex-wrap justify-content-around">
             <a href="{% url 'todos:index' %}">
-                <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-secondary text-light"
+                <input class="btn btn-lg btn-secondary border shadow rounded-pill my-4 px-4 py-2"
                        type="button" value="Cancel">
             </a>
-            <input class="border shadow rounded-pill mx-auto my-4 px-4 py-2 bg-danger text-white"
+            <input class="btn btn-lg btn-danger border shadow rounded-pill my-4 px-4 py-2"
                    type="submit" value="Delete">
-        </form>
-    </div>
+        </div>
+    </form>
 {% endblock %}
