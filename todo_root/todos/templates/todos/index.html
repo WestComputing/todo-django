@@ -2,7 +2,7 @@
 {% block head_title %}Todo List{% endblock %}
 {% block content %}
     {% if todo_list %}
-        <h1 class="text-center">Todo List</h1>
+        <h1 class="text-center">Todo List for {{ user.username }}</h1>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
             <tr>
