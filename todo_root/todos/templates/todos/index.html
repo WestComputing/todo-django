@@ -15,7 +15,11 @@
             </thead>
             <tbody>
             {% for todo in todo_list %}
-                <tr class="table-{% if todo.completed %}success{% elif todo.due_today %}warning{% elif todo.overdue %}danger{% else %}transparent{% endif %}">
+                <tr class="table-{% if todo.completed %}success
+                                    {% elif todo.due_today %}warning
+                                    {% elif todo.overdue %}danger
+                                    {% else %}transparent
+                                 {% endif %}">
                     <td>{{ todo.title }}</td>
                     <td class="text-center">{{ todo.completed|yesno:"Completed,Incomplete" }}</td>
                     <td class="text-center">{{ todo.created }}</td>
@@ -28,7 +32,7 @@
             </tbody>
         </table>
     {% else %}
-        <h1>Nothing to do!</h1>
+        <h1>Nothing to do!</h1>´
         <a href="{% url 'todos:new' %}">Create a new todo</a>
     {% endif %}
 {% endblock %}
